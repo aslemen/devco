@@ -1,0 +1,16 @@
+# ======
+# 0020 apt
+# ======
+
+{%- set _pkgs = ["build-essential", "git", "wget", "curl", "ca-certificates"] -%}
+
+# https://future-architect.github.io/articles/20240726a/
+RUN \
+  --mount=type=cache,target=/var/lib/apt,sharing=locked \
+  --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && apt-get install --no-install-recommends -y {{ _pkgs | join(" ") }} \
+  {% if uv -%}
+    {# && apt-get build-dep python3; #} 
+  {%- endif -%}
+  && :

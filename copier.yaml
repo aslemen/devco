@@ -1,0 +1,39 @@
+# ======
+# Copier settings
+# ======
+_subdirectory: src
+_exclude:
+  - _devco_*
+# ======
+# Questions
+# ======
+global_projectName:
+  type: str
+  qmark: "🌐"
+  help: What is the name of this project?
+  default: "devco/some-project"
+uv:
+  type: bool
+  qmark: "🐍"
+  help: Install uv (Python)?
+  default: no
+uv_pyVerList:
+  type: str
+  qmark: "🐍+"
+  help: |
+    Which versions of Python to install?
+    Specify one or more versions, separated by spaces (e.g. `3.13 3.14 3.15`).
+    No installation takes place when empty.
+  default: "3.14"
+  when: "{{ uv }}"
+uv_pyVerDefault:
+  type: str
+  qmark: "🐍+"
+  help: Default Python version? No specification when empty.
+  default: "{{ uv_pyVerList.split(' ')[0] }}"
+  when: "{{ uv and uv_pyVerList != '' }}"
+rustup:
+  type: bool
+  qmark: "🦀"
+  help: Install rustup (Rust)?
+  default: no

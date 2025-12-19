@@ -1,0 +1,14 @@
+FROM ubuntu:latest
+
+{% include "src/_devco_Dockerfile.d/0000_env.jinja" %}
+{% include "src/_devco_Dockerfile.d/0010_user.jinja" %}
+{% include "src/_devco_Dockerfile.d/0020_apt.jinja" %}
+
+USER ${UID}:${GID}
+
+{% include "src/_devco_Dockerfile.d/2000_userEnv.jinja" %}
+{% if uv -%}
+  {% include "src/_devco_Dockerfile.d/2020_uv.jinja" %}
+{%- endif %}
+
+WORKDIR /workspace

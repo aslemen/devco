@@ -1,0 +1,13 @@
+# ======
+# 2020 uv (Python)
+# ======
+RUN \
+  curl -LsSf https://astral.sh/uv/install.sh | sh \
+  && echo 'eval "$(uv generate-shell-completion bash)"' >> ~/.bashrc \
+  {% if uv_pyVerList != "" -%}
+    && uv python install {{ uv_pyVerList }} \
+  {%- endif %}
+  {% if uv_pyVerDefault != "" -%}
+    && uv python install {{ uv_pyVerDefault }} --default \
+  {%- endif %}
+  && :

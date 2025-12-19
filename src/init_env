@@ -1,0 +1,14 @@
+#!/bin/bash
+set -eu
+
+cd $(dirname $0)
+
+rm -f .env
+touch .env
+echo << EOF
+  HOST_UID=$(id -u)
+  HOST_UNAME=$(id -un)
+  HOST_GID=$(id -g)
+  HOST_GNAME=$(id -gn)
+  TZ=$(cat /etc/timezone)
+EOF

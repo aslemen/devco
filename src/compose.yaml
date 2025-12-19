@@ -1,0 +1,16 @@
+# https://zenn.dev/hideki1217/articles/8e1dd542a3a979
+services:
+  devel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: ${HOST_UID:-20000}
+        UNAME: ${HOST_UNAMAE:-dev}
+        GID: ${HOST_GID:-20000}
+        GNAME: ${HOST_GNAMAE:-dev}
+        TZ: ${TZ:-UTC}
+    volumes:
+      - ..:/workspace
+    working_dir: /workspace
+    tty: true

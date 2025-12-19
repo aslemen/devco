@@ -1,0 +1,33 @@
+# ======
+# 0010 user
+# ======
+
+# https://zenn.dev/hideki1217/articles/8e1dd542a3a979
+
+ARG UID=20000
+ARG UNAME=dev
+ARG GID=20000
+ARG GNAME=dev
+ENV HOME=/home/${UNAME}
+
+RUN \
+  CURGROUP_ENTRY=$(getent group "${GID}" > /dev/null); \
+  if [ -z ${CURGROUP_ENTRY} ]; then \
+    groupadd -g "${GID}" "${GNAME}"; \
+    echo "GID ${GID} is not found in the container system. A new one is created."; \
+  else \
+    CURGROUP_NAME=$(echo ${CURGROUP_ENTRY} | cut -d: -f1); \
+    echo "GID ${GID} is already in the container system (name: ${CURGROUP_NAME})."; \
+  fi; \
+  CURUSER_ENTRY=$(getent passwd "${UID}" > /dev/null); \
+  if [ -z ${CURUSER_ENTRY} ]; then \
+    useradd -u "${UID}" -g "${GID}" -s /bin/bash dev; \
+    echo "UID ${UID} is not found in the container system. A new one is created."; \
+  else \
+    CURUSER_NAME=$(echo ${CURUSER_ENTRY} | cut -d: -f1); \
+    echo "UID ${UID} is already in the container system (name: ${CURUSER_NAME})."; \
+  fi; \
+  mkdir ${HOME}; \
+  chown ${UID}:${GID} ${HOME}; \
+  usermod -d ${HOME} ${UNAME}; \
+  :
