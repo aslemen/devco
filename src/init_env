@@ -5,7 +5,7 @@ cd $(dirname $0)
 
 rm -f .env
 touch .env
-echo << EOF
+cat << EOF > .env
   HOST_UID=$(id -u)
   HOST_UNAME=$(id -un)
   HOST_GID=$(id -g)
