@@ -1,0 +1,53 @@
+#!/bin/bash
+{%- set _header = "[devco]" %}
+# ======
+# Devcontainer postStartCommand
+# ======
+# Commands to run each time the container is successfully started
+
+echo "{{ _header }} Welcome to the devcontainer {{ global_projectName }}!" 1>&2
+cd /workspace
+
+{% if uv -%}
+if [ -f .python_version ]; then
+    PYVER=$(cat .python_version)
+    uv python find ${PYVER}
+    if [ $? -eq 0 ]; then
+        echo "{{ _header }} Python installation (ver. ${PYVER}) found"
+    else
+        while true; do
+            read -p "{{ _header }} Python (ver. ${PYVER}) not installed. Install? (y/n)" IF_INSTALL
+            case "${IF_INSTALL}" in
+                [Yy])
+                    uv python install ${PYVER}
+                    exit 0
+                    ;;
+                [Nn])
+                    exit 0
+                    ;;
+                *)
+                    ;;
+            esac
+        done
+    fi
+fi
+
+if [ -d .venv ]; then
+    echo "{{ _header }} Python venv found" 1&>2
+else
+    while true; do
+        read -p "{{ _header }} Python venv not found. Create one? (y/n)" IF_VENV
+        case "${IF_VENV}" in
+            [Yy])
+                uv venv
+                exit 0
+                ;;
+            [Nn])
+                exit 0
+                ;;
+            *)
+                ;;
+        esac
+    done
+fi
+{%- endif %}
