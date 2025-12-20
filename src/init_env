@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# ======
+# Devcontainer initializeCommand
+# ======
+# A command string or list of command arguments to run on the host machine during initialization, including during container creation and on subsequent starts.
+# The command may run more than once during a given session.
+
 set -eu
 
 cd $(dirname $0)
