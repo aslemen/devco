@@ -5,7 +5,7 @@
 # ======
 # Commands to run each time the container is successfully started
 
-echo "{{ _header }} Welcome to the devcontainer {{ global_projectName }}!" 1>&2
+echo "{{ _header }} Welcome to the devcontainer {{ global_projectName }}!" 1&>2
 cd /workspace
 
 {% if uv -%}
