@@ -5,7 +5,12 @@
     "workspaceFolder": "/workspace",
     "customizations": {
         "vscode": {
-            "extensions": {},
+            "extensions": [
+                {% if uv -%}
+                "ms-python.python",
+                "charliermarsh.ruff",
+                {%- endif %}
+            ]
         }
     },
     "initializeCommand": ".devcontainer/init_env",
