@@ -6,9 +6,9 @@ services:
       dockerfile: Dockerfile
       args:
         UID: ${HOST_UID:-20000}
-        UNAME: ${HOST_UNAMAE:-dev}
+        UNAME: ${HOST_UNAME:-dev}
         GID: ${HOST_GID:-20000}
-        GNAME: ${HOST_GNAMAE:-dev}
+        GNAME: ${HOST_GNAME:-dev}
         TZ: ${TZ:-UTC}
     volumes:
       - ..:/workspace
