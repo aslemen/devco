@@ -5,7 +5,7 @@
 # ======
 # Commands to run each time the container is successfully started
 
-echo "{{ _header }} Welcome to the devcontainer {{ global_projectName }}!" 1&>2
+echo "{{ _header }} Welcome to the devcontainer {{ global_projectName }}!" 1>&2
 cd /workspace
 
 {% if uv -%}
@@ -33,7 +33,7 @@ if [ -f .python_version ]; then
 fi
 
 if [ -d .venv ]; then
-    echo "{{ _header }} Python venv found" 1&>2
+    echo "{{ _header }} Python venv found" 1>&2
 else
     while true; do
         read -p "{{ _header }} Python venv not found. Create one? (y/n)" IF_VENV
