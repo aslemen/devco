@@ -36,7 +36,7 @@ if [ -d .venv ]; then
     echo "{{ _header }} Python venv found" 1>&2
 else
     while true; do
-        read -p "{{ _header }} Python venv not found. Create one? (y/n)" IF_VENV
+        read -p "{{ _header }} Python venv not found. Create one? (y/n) " IF_VENV
         case "${IF_VENV}" in
             [Yy])
                 uv venv
