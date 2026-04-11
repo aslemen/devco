@@ -13,5 +13,8 @@ USER ${UID}:${GID}
 {% if deno -%}
   {% include "src/_devco_Dockerfile.d/2040_deno.jinja" %}
 {%- endif %}
+{% if fnm -%}
+  {% include "src/_devco_Dockerfile.d/2050_fnm.jinja" %}
+{%- endif %}
 
 WORKDIR /workspace

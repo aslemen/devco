@@ -1,0 +1,10 @@
+# ======
+# 2050 fnm (node, npm, Javascript)
+# ======
+ENV FNM_INSTALL=${HOME}/.local/share/fnm
+ENV PATH=${FNM_INSTALL}:${PATH}
+RUN \
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell --install-dir ${FNM_INSTALL} \
+  && echo 'eval "$(fnm env --use-on-cd --shell bash)"' >> ~/.bashrc \
+  && echo 'eval "$(fnm completions --shell bash)"' >> ~/.bashrc \
+  && :

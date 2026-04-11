@@ -42,3 +42,8 @@ deno:
   qmark: "🦖"
   help: Install deno (TypeScript)?
   default: no
+fnm:
+  type: bool
+  qmark: "[JS]"
+  help: Instal fnm (node, npm, Javascript)
+  default: no

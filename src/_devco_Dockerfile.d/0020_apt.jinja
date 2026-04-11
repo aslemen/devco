@@ -6,6 +6,9 @@
 {%- if deno -%}
   {%- set _pkgs = _pkgs + ["zip", "unzip"] -%}
 {%- endif -%}
+{%- if fnm -%}
+  {%- set _pkgs = _pkgs + ["unzip"] -%}
+{%- endif -%}
 
 # https://future-architect.github.io/articles/20240726a/
 RUN \
