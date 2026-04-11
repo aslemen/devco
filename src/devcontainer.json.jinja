@@ -10,6 +10,9 @@
                 "ms-python.python",
                 "charliermarsh.ruff",
                 {%- endif %}
+                {% if deno -%}
+                "denoland.vscode-deno",
+                {%- endif %}
             ]
         }
     },

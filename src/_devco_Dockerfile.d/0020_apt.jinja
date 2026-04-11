@@ -3,6 +3,9 @@
 # ======
 
 {%- set _pkgs = ["build-essential", "git", "wget", "curl", "ca-certificates"] -%}
+{%- if deno -%}
+  {%- set _pkgs = _pkgs + ["zip", "unzip"] -%}
+{%- endif -%}
 
 # https://future-architect.github.io/articles/20240726a/
 RUN \

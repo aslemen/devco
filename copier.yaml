@@ -37,3 +37,8 @@ rustup:
   qmark: "🦀"
   help: Install rustup (Rust)?
   default: no
+deno:
+  type: bool
+  qmark: "🦖"
+  help: Install deno (TypeScript)?
+  default: no

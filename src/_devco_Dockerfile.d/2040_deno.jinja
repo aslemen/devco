@@ -1,0 +1,9 @@
+# ======
+# 2040 Deno (TypeScript)
+# ======
+ENV DENO_INSTALL=${HOME}/.local/deno
+ENV PATH=${DENO_INSTALL}/bin:${PATH}
+RUN \
+  curl -fsSL https://deno.land/x/install/install.sh | sh \
+  && echo 'eval "$(deno completions bash)"' >> ~/.bashrc \
+  && :
