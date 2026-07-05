@@ -37,11 +37,6 @@ rustup:
   qmark: "🦀"
   help: Install rustup (Rust)?
   default: no
-deno:
-  type: bool
-  qmark: "🦖"
-  help: Install deno (TypeScript)?
-  default: no
 dotnet:
   type: bool
   qmark: "[.NET]"
@@ -55,6 +50,11 @@ dotnet_channel:
     Use a version number like `9.0`, or a named channel like `STS` or `LTS`.
   default: "9.0"
   when: "{{ dotnet }}"
+deno:
+  type: bool
+  qmark: "🦖"
+  help: Install deno (TypeScript)?
+  default: no
 fnm:
   type: bool
   qmark: "[JS]"
