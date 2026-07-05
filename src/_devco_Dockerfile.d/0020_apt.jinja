@@ -3,6 +3,9 @@
 # ======
 
 {%- set _pkgs = ["build-essential", "git", "wget", "curl", "ca-certificates"] -%}
+{%- if dotnet -%}
+  {%- set _pkgs = _pkgs + ["libicu74"] -%}
+{%- endif -%}
 {%- if deno -%}
   {%- set _pkgs = _pkgs + ["zip", "unzip"] -%}
 {%- endif -%}
