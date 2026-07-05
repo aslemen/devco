@@ -1,0 +1,8 @@
+# ======
+# 2030 dotnet
+# ======
+ENV DOTNET_ROOT=${HOME}/.local/share/dotnet
+ENV PATH=${DOTNET_ROOT}:${DOTNET_ROOT}/tools:${PATH}
+RUN \
+  curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --channel {{ dotnet_channel }} --install-dir ${DOTNET_ROOT} \
+  && :

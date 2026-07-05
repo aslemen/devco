@@ -42,6 +42,19 @@ deno:
   qmark: "🦖"
   help: Install deno (TypeScript)?
   default: no
+dotnet:
+  type: bool
+  qmark: "[.NET]"
+  help: Install dotnet (.NET SDK)?
+  default: no
+dotnet_channel:
+  type: str
+  qmark: "[.NET]+"
+  help: |
+    Which .NET release channel to install?
+    Use a version number like `9.0`, or a named channel like `STS` or `LTS`.
+  default: "9.0"
+  when: "{{ dotnet }}"
 fnm:
   type: bool
   qmark: "[JS]"

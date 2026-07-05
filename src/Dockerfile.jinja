@@ -10,6 +10,9 @@ USER ${UID}:${GID}
 {% if uv -%}
   {% include "src/_devco_Dockerfile.d/2020_uv.jinja" %}
 {%- endif %}
+{% if dotnet -%}
+  {% include "src/_devco_Dockerfile.d/2030_dotnet.jinja" %}
+{%- endif %}
 {% if deno -%}
   {% include "src/_devco_Dockerfile.d/2040_deno.jinja" %}
 {%- endif %}
